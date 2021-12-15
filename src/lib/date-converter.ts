@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat.js';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import pt from 'dayjs/locale/pt-br';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
+import customParseFormat from 'dayjs/plugin/customParseFormat.js';
+import pt from 'dayjs/locale/pt-br.js';
+import utc from 'dayjs/plugin/utc.js';
+import timezone from 'dayjs/plugin/timezone.js';
 
 export class DateConverter {
 
