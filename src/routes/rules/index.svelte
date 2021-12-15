@@ -136,11 +136,13 @@
 <svelte:head>
 	<title>Regras de Negócio</title>
 </svelte:head>
+<section class="container">
 
-<div class="columns is-variable is-6">
+
+<div class="columns is-variable is-3">
 	<div class="column">
-		<div class="brules-menu box">
-			<h3 class="title is-4">Áreas</h3>
+		<div class="brules-menu">
+			<h3 class="title is-5">Áreas</h3>
 
 			<div class="search">
 				<div class="control has-icons-left">
@@ -180,7 +182,7 @@
 		</div>
 	</div>
 
-	<div class="column is-two-thirds">
+	<div class="column is-9">
 		{#if editArea}
 			<Area bind:area={editArea} on:change={areaChanged} />
 		{:else}
@@ -225,7 +227,7 @@
 		{/if}
 	</div>
 </div>
-
+</section>
 <style>
 	.brules-menu {
 		font-size: 1rem;

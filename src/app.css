@@ -145,7 +145,7 @@ a.button {
 	color:var(--primary-inverted-color)
 }
 
-.box > button, .panel-block > button, .column > .button, .panel-block {
+.box > button, .panel-block > button, .column > .button, .panel-block, button {
 	color:var(--primary-inverted-color) !important;
 }
 

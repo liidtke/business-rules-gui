@@ -32,7 +32,7 @@
 
 </script>
 
-<header>
+<header class="container">
 	<div class="corner">
 		<a href="/">
 			<img src={logo} alt="DracmaLogo" />
@@ -73,6 +73,7 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+		flex-grow: 0;
 	}
 
 	.corner {
@@ -179,9 +180,7 @@
   background-color: var(--accent-color2);
 }
 
-header{
-	padding: 0 var(--h-padding);
-}
+
 
 @keyframes loader-animation {
   0% {
