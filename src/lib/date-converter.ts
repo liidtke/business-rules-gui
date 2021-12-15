@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import LocalizedFormat from 'dayjs/plugin/localizedFormat';
+import LocalizedFormat from 'dayjs/plugin/localizedFormat.js';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import pt from 'dayjs/locale/pt-br';
 import utc from 'dayjs/plugin/utc';
