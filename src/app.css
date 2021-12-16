@@ -10,6 +10,10 @@
 	--h-padding:2rem;
 }
 
+html{
+	background-color: #4c566a;
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;
@@ -19,6 +23,15 @@ body {
 		var(--primary-color) 0%,
 		var(--alternate-color) 80.23%
 	);
+}
+
+body.no-theme{
+	opacity: 0;
+}
+
+body.light-theme, body.dark-theme{
+	opacity: 100;
+	transition: opacity .4s ease-in-out;
 }
 
 body::before {
@@ -145,8 +158,15 @@ a.button {
 	color:var(--primary-inverted-color)
 }
 
-.box > button, .panel-block > button, .column > .button, .panel-block, button {
-	color:var(--primary-inverted-color) !important;
+.box > button, .panel-block > button, .column > .button, .panel-block, main > button, .column * .button {
+	color:var(--primary-inverted-color);
+}
+
+.button.is-light{
+	color:var(--primary-color);
+}
+.button.is-light:hover{
+	color:var(--secondary-color);
 }
 
 .panel-block:hover{

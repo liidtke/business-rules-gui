@@ -15,9 +15,7 @@
 
 <style>
 	main {
-		
-		padding: 1rem var(--h-padding);
-	
+		padding: 2rem;
 	}
 
 	footer {
