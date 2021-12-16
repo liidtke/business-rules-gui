@@ -158,15 +158,20 @@ a.button {
 	color:var(--primary-inverted-color)
 }
 
-.box > button, .panel-block > button, .column > .button, .panel-block, main > button, .column * .button {
-	color:var(--primary-inverted-color);
+.box > button, 
+.panel-block > button, 
+.column > .button, 
+.panel-block, main > button, 
+.column * .button {
+	color:var(--primary-inverted-color) !important;
 }
 
-.button.is-light{
-	color:var(--primary-color);
+.button.is-light {
+	color:var(--primary-color) !important;
 }
+
 .button.is-light:hover{
-	color:var(--secondary-color);
+	color:var(--secondary-color) !important;
 }
 
 .panel-block:hover{
