@@ -28,7 +28,7 @@
 	--tertiary-inverted-color:#2A2E38;
   --alternate-inverted-color:#4c566a;
   
-
+  --strong-color:var(--black);
   --text-color: #444444;
   --accent-color: var(--blue);
   --background-color: var(--primary-color);
@@ -46,8 +46,9 @@
 	--secondary-inverted-color:#e5e9f0;
 	--tertiary-inverted-color:#d8dee9;
   --alternate-inverted-color:#d8dee9;
-
-  --text-color: --white;
+  
+  --strong-color:var(--white);
+  --text-color: var(--white);
   --accent-color: var(--red);
   --heading-color: var(--white);
 }

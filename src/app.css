@@ -145,6 +145,11 @@ body{
 	color:var(--primary-inverted-color)
 }
 
+.box.secondary{
+  background-color: var(--tertiary-color) !important;
+	color:var(--primary-inverted-color)
+}
+
 .is-primary{
 	background-color: var(--primary-color);
 	color:var(--primary-inverted-color)
@@ -166,22 +171,14 @@ a.button {
 	color:var(--primary-inverted-color) !important;
 }
 
+strong{
+	color: var(--strong-color);
+}
+
 .button.is-light {
-	color:var(--primary-color) !important;
+	color:var(--black) !important;
 }
 
-.button.is-light:hover{
-	color:var(--secondary-color) !important;
-}
-
-.panel-block:hover{
-	color: var(--blue) !important;
-	background-color: var(--secondary-color) !important;
-}
-
-.panel-block .active{
-	color: var(--blue) !important;
-}
 
 .button{
 	background-color: var(--light-color);

@@ -49,9 +49,8 @@
         {#if rule}
             <h3 class="subtitle">Regra {rule.code}</h3>
         {/if}
-        <div class="columns is-variable is-6">
-            <div class="column">
-                <div class="brules-menu box">
+  
+                <div class="brules-menu box secondary">
                     {#each history as hist}
                         <a class="item" on:click={selectHistory(hist)}>
                             Por {hist.createdBy} em {dateConverter.convert(
@@ -62,8 +61,7 @@
                         <p>Essa regra não possui histórico</p>
                     {/each}
                 </div>
-            </div>
-            <div class="column is-two-thirds">
+            <div class="column">
                 {#if selectedRule && oldRule}
                     <h3 class="title">Modificações</h3>
                     <h3 class="subtitle">Alterado por {selectedHistory.createdBy} em {dateConverter.convert(
@@ -75,7 +73,7 @@
                     />
                 {/if}
             </div>
-        </div>
+
     {/if}
 </div>
 
@@ -91,7 +89,7 @@
 	 border-radius: 2px;
 	 cursor: pointer;
 	 text-decoration: none;
-	 color: #4a4a4a !important;
+	 color: var(--primary-inverted-color);
 }
  .brules-menu a.action:hover, .brules-menu a.item:hover {
 	 background-color: #f5f5f5;
