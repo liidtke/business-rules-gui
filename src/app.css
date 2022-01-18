@@ -20,8 +20,8 @@ body {
 	background-color: var(--primary-color);
 	background: linear-gradient(
 		360deg,
-		var(--primary-color) 0%,
-		var(--alternate-color) 80.23%
+		var(--alternate-color) 0%,
+		var(--tertiary-color) 80.23%
 	);
 }
 

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { IArea, IRule } from '$lib/service';
-	import RuleHistory from '$lib/RuleHistory.svelte';
-	import Message from '$lib/Message.svelte';
-	import Tags from '$lib/Tags.svelte';
-	import Text from '$lib/Text.svelte';
-	import { onMount, onDestroy } from 'svelte';
-	import { api } from '$lib/store';
-	import { createEventDispatcher } from 'svelte';
-  
+	import type { IArea, IRule } from "$lib/service";
+	import RuleHistory from "$lib/RuleHistory.svelte";
+	import Message from "$lib/Message.svelte";
+	import Tags from "$lib/Tags.svelte";
+	import { onMount, onDestroy } from "svelte";
+	import { api } from "$lib/store";
+	import { createEventDispatcher } from "svelte";
+	import { mdguide } from "$lib/md-guide";
+
 	const dispatch = createEventDispatcher();
 
 	export let rule: IRule; //parameter
@@ -18,22 +18,28 @@
 	let validationFields: any[];
 	let statuses: any[] = [];
 	let showHistory: boolean = false;
+	let showGuide:boolean = false;
 
 	onMount(async () => {
+		validationFields = [];
 		statuses = $api.getStatus();
 		selectedRule = { ...rule };
 	});
 
 	onDestroy(() => {});
 
-	$: codeError = validationFields && validationFields.find((v) => v.field == 'code');
-	$: titleError = validationFields && validationFields.find((v) => v.field == 'title');
-	$: areaError = validationFields && validationFields.find((v) => v.field == 'areaId');
-	$: statusError = validationFields && validationFields.find((v) => v.field == 'status');
+	$: codeError =
+		validationFields && validationFields.find((v) => v.field == "code");
+	$: titleError =
+		validationFields && validationFields.find((v) => v.field == "title");
+	$: areaError =
+		validationFields && validationFields.find((v) => v.field == "areaId");
+	$: statusError =
+		validationFields && validationFields.find((v) => v.field == "status");
 
 	async function saveRule() {
-		console.log('save rule', selectedRule);
-		
+		console.log("save rule", selectedRule);
+
 		validationFields = [];
 		errorMessage = null;
 
@@ -45,28 +51,27 @@
 			}
 		} else {
 			//success("Salvo com sucesso");
-			dispatch('change', {save: result?.data ?? selectedRule})
+			dispatch("change", { save: result?.data ?? selectedRule });
 		}
 
 		//console.log(selectedRule, 'rule');
 	}
 
-	async function removeRule(){
+	async function removeRule() {
 		let result = await $api.removeRule(selectedRule);
 		if (result && result.isError) {
 			errorMessage = result.message;
 			if (result.isValidation) {
 				validationFields = result.validations;
 			}
-		} 
-		if(result.isSuccess) {
+		}
+		if (result.isSuccess) {
 			rule = null;
-			dispatch('change', {remove: true})
+			dispatch("change", { remove: true });
 		}
 	}
 
 	function cancelRule() {
-		validationFields = [];
 		rule = null;
 	}
 
@@ -91,9 +96,9 @@
 		<div class="column noptop">
 			<div class="field is-grouped is-grouped-right">
 				{#if selectedRule.id}
-				<p class="control">
-					<a class="button" on:click={viewHistory}> Histórico </a>
-				</p>
+					<p class="control">
+						<a class="button" on:click={viewHistory}> Histórico </a>
+					</p>
 				{/if}
 				<p class="control">
 					<a class="button is-danger" on:click={removeRule}>Excluir</a>
@@ -115,9 +120,8 @@
 					{selectedRule.title}
 				{/if}
 			</h3>
-		
-			<h3 class="subtitle">{selectedRule.code ?? ' '}</h3>					
-				
+
+			<h3 class="subtitle">{selectedRule.code ?? " "}</h3>
 		</div>
 	</div>
 
@@ -193,12 +197,19 @@
 		<div class="field">
 			<label class="label">Descrição</label>
 			<div class="control">
-				<Text bind:text={selectedRule.text} />
+				<textarea class="textarea" bind:value={selectedRule.text} rows="12"></textarea>
 			</div>
 		</div>
+		<button class="button" on:click={() => showGuide = !showGuide}>Guia .MD</button>
 	</div>
 {/if}
 
 {#if showHistory}
 	<RuleHistory bind:rule={selectedRule} />
+{/if}
+
+{#if showGuide}
+	<pre>
+		{mdguide}
+	</pre>
 {/if}

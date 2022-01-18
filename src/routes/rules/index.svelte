@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onDestroy, onMount } from "svelte";
 	import { page } from "$app/stores";
-	import { api } from "$lib/store";
-	import { storeAreas, storeRules, selectedArea } from "$lib/store";
+	import { storeAreas, storeRules, selectedArea, api } from "$lib/store";
+	import { text } from "svelte/internal";
 	import type { IArea, IRule } from "$lib/service";
+	import Viewer from "$lib/Viewer.svelte";
 	import Area from "$lib/Area.svelte";
 	import RuleEdit from "$lib/RuleEdit.svelte";
-	import { text } from "svelte/internal";
 
 	let areas: IArea[] = [];
 	let editArea: IArea;
@@ -150,7 +150,7 @@
 <svelte:head>
 	<title>Regras de Negócio</title>
 </svelte:head>
-<section class="container">
+<section class="">
 	<div class="columns is-variable is-3">
 		<div class="column">
 			<div class="brules-menu">
@@ -235,8 +235,8 @@
 					</div>
 					{#each filteredRules as rule}
 						<!-- svelte-ignore a11y-missing-attribute -->
-						<div class="panel-block bb-0">
-							<a class="panel-icon" on:click={viewDetails(rule)}>
+						<div class="panel-block bb-0" on:click={viewDetails(rule)}>
+							<a class="panel-icon">
 								<i class="fas fa-caret-down" aria-hidden="true" />
 							</a>
 							<a on:click={selectRule(rule)}>
@@ -246,7 +246,7 @@
 						{#if rule.showDetails || showAllDetails}
 							<div class="rule-detail">
 								<p>
-									{@html rule.text}
+									<Viewer bind:text={rule.text} />
 								</p>
 							</div>
 						{/if}
@@ -344,7 +344,7 @@
 		padding-left: 40px;
 		border-bottom: 1px solid #ededed;
 		box-shadow: inset 0px 12px 9px -10px var(--tertiary-color);
-		background: var(--secondary-color);
+		background: var(--primary-color);
 	}
 
 	.panel-block:hover {
@@ -373,6 +373,7 @@
     display: flex;
     justify-content: flex-start;
     padding: .5em .75em;
+		cursor: pointer;
 }
 
 a.panel-block, label.panel-block {

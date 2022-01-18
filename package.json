@@ -33,10 +33,9 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
-    "@tinymce/tinymce-svelte": "^0.1.1",
     "cookie": "^0.4.1",
     "dayjs": "^1.10.7",
     "imask": "^6.2.2",
-    "tinymce": "^5.10.2"
+    "marked": "^4.0.10"
   }
 }
