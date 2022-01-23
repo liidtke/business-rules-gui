@@ -9,7 +9,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: vercel(),
+		adapter: adapter(),
 		vite: {
 			define: {
 					'process.env': process.env,

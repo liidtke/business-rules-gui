@@ -10,15 +10,28 @@
 	--h-padding:2rem;
 }
 
+html{
+	background-color: #4c566a;
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;
 	background-color: var(--primary-color);
 	background: linear-gradient(
 		360deg,
-		var(--primary-color) 0%,
-		var(--alternate-color) 80.23%
+		var(--alternate-color) 0%,
+		var(--tertiary-color) 80.23%
 	);
+}
+
+body.no-theme{
+	opacity: 0;
+}
+
+body.light-theme, body.dark-theme{
+	opacity: 100;
+	transition: opacity .4s ease-in-out;
 }
 
 body::before {
@@ -132,6 +145,11 @@ body{
 	color:var(--primary-inverted-color)
 }
 
+.box.secondary{
+  background-color: var(--tertiary-color) !important;
+	color:var(--primary-inverted-color)
+}
+
 .is-primary{
 	background-color: var(--primary-color);
 	color:var(--primary-inverted-color)
@@ -145,18 +163,22 @@ a.button {
 	color:var(--primary-inverted-color)
 }
 
-.box > button, .panel-block > button, .column > .button, .panel-block {
+.box > button, 
+.panel-block > button, 
+.column > .button, 
+.panel-block, main > button, 
+.column * .button {
 	color:var(--primary-inverted-color) !important;
 }
 
-.panel-block:hover{
-	color: var(--blue) !important;
-	background-color: var(--secondary-color) !important;
+strong{
+	color: var(--strong-color);
 }
 
-.panel-block .active{
-	color: var(--blue) !important;
+.button.is-light {
+	color:var(--black) !important;
 }
+
 
 .button{
 	background-color: var(--light-color);

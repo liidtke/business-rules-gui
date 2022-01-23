@@ -3,36 +3,38 @@
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import logo from './logo.svg';
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 
 	let isLight: boolean = true;
 	let light = 'light-theme';
 	let dark = 'dark-theme';
 
-	function changeTheme() {
-		isLight = !isLight;
-	
+	onMount(async () => {
+		initialCheck();
+	});
 
-		var el: HTMLElement = document.getElementsByTagName('body')[0] as any;
-		if (el.classList.contains(light)) {
-			el.classList.replace(light, dark);
-		} else {
-			el.classList.replace(dark, light);
-		}
+	function initialCheck(){
+		isLight = !document.cookie.split(';').some(x => x.includes('theme=dark-theme'));
+		setTheme();
+	}
 
+	function setTheme() {
+    document.body.className = isLight ? light : dark;
+		defineCookie();
+	}
+
+	function defineCookie(){
 		document.cookie = `theme=${isLight ? light : dark}`;
 	}
 
-	onMount(async () => {
-		var includes = document.cookie.split(';').some(x => x.includes('theme=dark-theme'));
-		if (includes) {
-			changeTheme();
-		}
-	});
+	function changeTheme(){
+		isLight = !isLight;
+		setTheme();
+	}
 
 </script>
 
-<header>
+<header class="container">
 	<div class="corner">
 		<a href="/">
 			<img src={logo} alt="DracmaLogo" />
@@ -73,6 +75,7 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+		flex-grow: 0;
 	}
 
 	.corner {
@@ -179,9 +182,7 @@
   background-color: var(--accent-color2);
 }
 
-header{
-	padding: 0 var(--h-padding);
-}
+
 
 @keyframes loader-animation {
   0% {

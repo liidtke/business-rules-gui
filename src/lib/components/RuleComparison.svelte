@@ -2,7 +2,7 @@
 	export let oldRule: any; //History
 	export let currentRule: any; //IRule
 
-	let fields: string[] = ['code', 'title', 'text', 'status', 'description'];
+	let fields: string[] = ['code', 'title', 'text', 'status'];
 
 	console.log(oldRule, 'old');
 	console.log(currentRule, 'current');
@@ -38,7 +38,7 @@
 		padding: 0.5rem;
 		min-height: 40px;
 		min-width: 70px;
-		border: 1pt solid #0000001c;
+		border: 1pt solid var(--tertiary-color);
 		border-radius: 2px;
 	}
 
@@ -50,11 +50,11 @@
 	.diff {
 		display: inline-flex;
 	}
-	.dif .old {
+	.diff .old {
 		text-decoration: line-through;
-		background-color: --red;
+		background-color: var(--red);
 	}
-	.dif .new {
-		background-color: --green;
+	.diff .new {
+		background-color: var(--blue);
 	}
 </style>
