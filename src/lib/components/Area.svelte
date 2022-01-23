@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { IArea } from "$lib/service";
-import Nip from '$lib/Nip.svelte';
+import Nip from '$lib/components/Nip.svelte';
 import { api } from '$lib/store'; 
 import { createEventDispatcher } from 'svelte';
 const dispatch = createEventDispatcher();

@@ -1,9 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import RuleComparison from "$lib/RuleComparison.svelte";
+    import RuleComparison from "$lib/components/RuleComparison.svelte";
     import { api } from '$lib/store';
-    import dateConverter from "./date-converter";
-    import type { IRule } from "./service";
+    import dateConverter from "$lib/date-converter";
+    import type { IRule } from "$lib/service";
 
     export let rule:IRule;
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { IArea, IRule } from "$lib/service";
-	import RuleHistory from "$lib/RuleHistory.svelte";
-	import Message from "$lib/Message.svelte";
-	import Tags from "$lib/Tags.svelte";
+	import RuleHistory from "$lib/components/RuleHistory.svelte";
+	import Message from "$lib/components/Message.svelte";
+	import Tags from "$lib/components/Tags.svelte";
 	import { onMount, onDestroy } from "svelte";
 	import { api } from "$lib/store";
 	import { createEventDispatcher } from "svelte";

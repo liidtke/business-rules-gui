@@ -4,9 +4,9 @@
 	import { storeAreas, storeRules, selectedArea, api } from "$lib/store";
 	import { text } from "svelte/internal";
 	import type { IArea, IRule } from "$lib/service";
-	import Viewer from "$lib/Viewer.svelte";
-	import Area from "$lib/Area.svelte";
-	import RuleEdit from "$lib/RuleEdit.svelte";
+	import Viewer from "$lib/components/Viewer.svelte";
+	import Area from "$lib/components/Area.svelte";
+	import RuleEdit from "$lib/components/RuleEdit.svelte";
 
 	let areas: IArea[] = [];
 	let editArea: IArea;
