@@ -8,7 +8,7 @@ export class AuthService {
 
   api:string;
   constructor(){
-    this.api = GATEWAY_URL.toString();
+    this.api = GATEWAY_URL as any;
   }
 
   headers = {
