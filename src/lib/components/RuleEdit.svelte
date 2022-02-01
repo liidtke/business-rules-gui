@@ -128,15 +128,12 @@
 	<Message bind:text={errorMessage} />
 
 	<div class="columns is-variable is-0" style="margin-bottom:0px;">
-		<div class="column">
-			<Tags on:tags={handleTags} bind:tags={selectedRule.tags} />
-		</div>
 		<div class="column sm-options">
-			<div class="field is-grouped is-grouped-right">
+			<div class="field is-grouped is-grouped-left">
 				<div class="control">
-					<div class="select is-small {areaError ? 'is-danger' : ''}">
+					<div class="select {areaError ? 'is-danger' : 'is-warning'}">
 						<select bind:value={selectedRule.areaId}>
-							<option value={null}> Selecione </option>
+							<option value={null}>Áreas</option>
 							{#each areas as aSelect}
 								<option value={aSelect.id}>
 									{aSelect.name}
@@ -147,7 +144,7 @@
 				</div>
 
 				<div class="control">
-					<div class="select is-small {statusError ? 'is-danger' : ''}">
+					<div class="select {statusError ? 'is-danger' : ''}">
 						<select bind:value={selectedRule.status}>
 							<option value={null}>Selecione</option>
 							{#each statuses as sStatus}
@@ -159,6 +156,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="column">
+			<Tags on:tags={handleTags} bind:tags={selectedRule.tags} />
 		</div>
 	</div>
 

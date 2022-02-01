@@ -201,3 +201,7 @@ a {
 color:var(--heading-color) !important;
 }
 
+.button.is-primary {
+	color: var(--button-text-color) !important;
+}
+

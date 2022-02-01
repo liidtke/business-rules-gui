@@ -88,8 +88,11 @@
 	}
 
 	function viewDetails(rule) {
+		console.log(rule);
 		rule.showDetails = !rule.showDetails;
-	  showAllDetails = !showAllDetails;
+		$storeRules = $storeRules;
+		
+	  //showAllDetails = !showAllDetails;
 	}
 
 	$: filteredRules = !ruleSearchField
@@ -109,17 +112,23 @@
 	}
 
 	function searchRules(search) {
-		if (!$storeRules) {
+		if (!$storeRules || !search) {
+			showAllDetails = false;
 			return $storeRules;
 		}
 
 		let predicate = search.toLowerCase();
+		showAllDetails = true;
 
 		return $storeRules.filter(
 			(x) =>
 				x.code.toLowerCase().includes(predicate) ||
 				x.title.toLowerCase().includes(predicate)
 		);
+	}
+
+	function cycleAll(){
+		showAllDetails = !showAllDetails;
 	}
 
 	function handleChangeRule(event) {
@@ -210,7 +219,14 @@
 				<nav class="panel is-primary">
 					<p class="panel-heading">
 						Regras de Negócio
-						{#if area}- {area.name}{/if}
+						{#if area} 
+						<span class="highlight">
+						 {area.name}
+						</span>
+						{/if}
+						<a href="" style="float:right" on:click="{cycleAll}"  >
+							<i class="fab fa-expand"/>
+						</a>
 					</p>
 					<div class="panel-block">
 						<button class="button add-area" on:click={addRule}>
@@ -342,7 +358,6 @@
 	.rule-detail {
 		position: relative;
 		padding-left: 40px;
-		border-bottom: 1px solid #ededed;
 		box-shadow: inset 0px 12px 9px -10px var(--tertiary-color);
 		background: var(--primary-color);
 	}
@@ -378,6 +393,14 @@
 
 a.panel-block, label.panel-block {
     cursor: pointer;
+}
+
+.highlight{
+	color:var(--orange)
+}
+
+a:hover{
+	color: var(--text-color);
 }
 
 </style>

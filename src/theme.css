@@ -33,6 +33,7 @@
   --accent-color: var(--blue);
   --background-color: var(--primary-color);
   --heading-color: var(--black);
+  --button-text-color:var(--white);
 }
 
 
@@ -51,4 +52,5 @@
   --text-color: var(--white);
   --accent-color: var(--red);
   --heading-color: var(--white);
+  --button-text-color:var(--white);
 }

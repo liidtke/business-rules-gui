@@ -1,16 +1,33 @@
 <script lang="ts">
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
+	import { isAuthenticated } from "$lib/store";
+	import { goto } from '$app/navigation';
+	import { onMount, afterUpdate } from 'svelte';
+  import { AuthService } from '$lib/auth-service';
+
+	let authService = new AuthService();
+
+	onMount(async () => {
+		if(!$isAuthenticated){
+			let isLogIn = authService.reload();
+			if(!isLogIn){
+				goto("/login");
+			}
+		}
+	});
 </script>
 
-<Header />
+<Header bind:authService/>
 
 <main>
 	<slot />
 </main>
 
 <footer>
-	<!-- <p>footer</p> -->
+	{#if !$isAuthenticated}
+		<p>não autenticado</p>
+	{/if}
 </footer>
 
 <style>
